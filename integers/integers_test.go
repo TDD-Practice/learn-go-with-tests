@@ -1,10 +1,8 @@
-package integers_test
+package integers
 
-import (
-	"testing"
-)
+import "testing"
 
-func assertWantEqualGot(t testing.T, got, want int) {
+func assertWantEqualGot(t *testing.T, got int, want int) {
 	if want != got {
 		t.Errorf("want %d instead got %d", want, got)
 	}
