@@ -3,7 +3,7 @@ package main
 import "testing"
 
 func TestHelloWorld(t *testing.T){
-	got := HelloWorld()
+	got := helloWorld()
 	want := "Hola Matheus!"
 	
 	if got != want {
