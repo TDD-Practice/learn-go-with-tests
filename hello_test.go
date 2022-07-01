@@ -15,21 +15,28 @@ func TestHello(t *testing.T){
 	t.Run("When invoked with a name and lang='ENG' it says 'Hello, %name'!",
 func(t *testing.T) {
 	got := sayHello("Matheus", "")
-	want := engHello + "Matheus!"
+	want := engHello + ", Matheus!"
 	assertCorrectSayHello(t, got, want)
 })
 
 t.Run("When invoked with name='' and lang='' it says 'Hello, person!'",
 func(t *testing.T) {
 	got := sayHello("", "")
-	want := engHello + "person!"
+	want := engHello + ", person!"
 	assertCorrectSayHello(t, got, want)
 })
 
 t.Run("When invoked with a name and lang='ESP' it says 'Hola, %name'!", func(t *testing.T) {
 	got := sayHello("Matheus", "ESP")
 
-	want := "Hola, Matheus!"
+	want := espHello + ", Matheus!"
+	assertCorrectSayHello(t, got, want)
+} )
+
+t.Run("When invoked with a name and lang='FRA' it says 'Bonjour, %name'!", func(t *testing.T) {
+	got := sayHello("Matheus", "ESP")
+
+	want := espHello + ", Matheus!"
 	assertCorrectSayHello(t, got, want)
 } )
 

@@ -2,8 +2,9 @@ package main
 
 import "fmt"
 
-const engHello = "Hello, "
-const espHello = "Hola, "
+const engHello = "Hello"
+const espHello = "Hola"
+const fraHello = "Bonjour"
 
 
 func helloWorld() string {
@@ -21,16 +22,23 @@ func sayHello(name string, lang string) string {
 	getGreet := func (lang string) string {
 		greet := ""
 
-		if lang == "ENG" { greet = engHello}
-		if lang == "ESP" { greet = espHello}
-		
+		switch lang {
+		case "ENG":
+			greet = engHello
+		case "ESP":
+			greet = espHello
+		case "FRA":
+			greet = fraHello
+		default:
+			greet = engHello
+		}
+
 		return greet
 	}
 
+
 	if name == "" {name = "person"}
-	
-	if lang  == "" {lang = "ENG"}
 
 	greet := getGreet(lang)
-	return fmt.Sprintf("%s%s!", greet, name)
+	return fmt.Sprintf("%s, %s!", greet, name)
 }
