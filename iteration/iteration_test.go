@@ -30,3 +30,9 @@ func ExampleIterator() {
 	fmt.Println(Iterator("a", 5))
 	//Output: aaaaa
 }
+
+func BenchmarkRepeat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Iterator("i", i)
+	}
+}
