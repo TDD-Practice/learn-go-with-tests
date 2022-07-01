@@ -1,5 +1,6 @@
 package integers
 
 func Adder(a, b int) (sum int) {
-	return 3
+	sum = a + b
+	return
 }
