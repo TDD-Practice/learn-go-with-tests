@@ -1,5 +1,8 @@
 package iteration
 
-func Iterator(s string) (sequence string) {
-	return "aaaaa"
+func Iterator(character string) (sequence string) {
+	for i := 0; i < 5; i++ {
+		sequence += character
+	}
+	return
 }
