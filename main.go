@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 const engHello = "Hello, "
+const espHello = "Hola, "
 
 
 func helloWorld() string {
@@ -15,9 +16,21 @@ func helloYou(name string) string{
 }
 
 
-func sayHello(name string) string {
-	if name == "" {
-		name = "person"
+func sayHello(name string, lang string) string {
+	
+	getGreet := func (lang string) string {
+		greet := ""
+
+		if lang == "ENG" { greet = engHello}
+		if lang == "ESP" { greet = espHello}
+		
+		return greet
 	}
-	return fmt.Sprintf("%s%s!", engHello, name)
+
+	if name == "" {name = "person"}
+	
+	if lang  == "" {lang = "ENG"}
+
+	greet := getGreet(lang)
+	return fmt.Sprintf("%s%s!", greet, name)
 }
