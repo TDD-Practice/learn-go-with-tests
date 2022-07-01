@@ -1,6 +1,9 @@
 package integers
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func assertWantEqualGot(t *testing.T, want, got int) {
 	if want != got {
@@ -15,4 +18,10 @@ func TestAdder(t *testing.T) {
 		assertWantEqualGot(t, want, got)
 
 	})
+}
+
+func ExampleAdder() {
+	sum := Adder(1, 5)
+	fmt.Println(sum)
+	// Output: 6
 }
