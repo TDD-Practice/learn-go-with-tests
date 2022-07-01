@@ -2,7 +2,7 @@ package integers
 
 import "testing"
 
-func assertWantEqualGot(t *testing.T, got int, want int) {
+func assertWantEqualGot(t *testing.T, want, got int) {
 	if want != got {
 		t.Errorf("want %d instead got %d", want, got)
 	}
