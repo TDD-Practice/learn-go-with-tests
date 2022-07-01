@@ -18,6 +18,12 @@ func TestIterator(t *testing.T) {
 		want := "aaaaa"
 		assertWantEqualsGot(t, want, got)
 	})
+
+	t.Run("When called with 'b' and 9, returns 'bbbbbbbbb' (9*'b')", func(t *testing.T) {
+		got := Iterator("b", 9)
+		want := "bbbbbbbbb"
+		assertWantEqualsGot(t, want, got)
+	})
 }
 
 func ExampleIterator() {
