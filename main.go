@@ -6,22 +6,17 @@ const engHello = "Hello"
 const espHello = "Hola"
 const fraHello = "Bonjour"
 
-
 func helloWorld() string {
 	return "Hola Matheus!"
 }
 
-
-func helloYou(name string) string{
+func helloYou(name string) string {
 	return fmt.Sprintf("%s%s!", engHello, name)
 }
 
-
 func sayHello(name string, lang string) string {
-	
-	getGreet := func (lang string) string {
-		greet := ""
 
+	getGreet := func(lang string) (greet string) {
 		switch lang {
 		case "ENG":
 			greet = engHello
@@ -33,11 +28,12 @@ func sayHello(name string, lang string) string {
 			greet = engHello
 		}
 
-		return greet
+		return
 	}
 
-
-	if name == "" {name = "person"}
+	if name == "" {
+		name = "person"
+	}
 
 	greet := getGreet(lang)
 	return fmt.Sprintf("%s, %s!", greet, name)
