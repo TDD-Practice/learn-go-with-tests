@@ -1,6 +1,8 @@
 package structs
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestRectArea(t *testing.T) {
 	rectangle := Rectangle{2.00, 2.00}
@@ -49,8 +51,8 @@ func TestPolimorphicArea(t *testing.T) {
 		assertShapeArea(t, Circle{10.00}, 10.00*10.00*3.1416)
 	})
 
-	t.Run("Must fail when calculating the area of a Line", func(t *testing.T) {
+	/* 	t.Run("Must fail when calculating the area of a Line", func(t *testing.T) {
 		line := Line{10.00, 10.00}
 		assertShapeArea(t, line, 10.00*10.00*3.1416)
-	})
+	}) */
 }
