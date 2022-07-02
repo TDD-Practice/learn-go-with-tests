@@ -32,7 +32,7 @@ func TestPolimorphicArea(t *testing.T) {
 	}
 
 	t.Run("Can calculate area of a Rectangle", func(t *testing.T) {
-		assertShapeArea(t, Rectangle{2.00, 2.00}, 8.00)
+		assertShapeArea(t, Rectangle{2.00, 2.00}, 4.00)
 	})
 
 	t.Run("Can calculate perimeter of a Circle", func(t *testing.T) {
