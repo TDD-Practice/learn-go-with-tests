@@ -9,13 +9,10 @@ func SliceSum(arr []int) (sum int) {
 	return
 }
 
-func SliceSumAll(slices ...[]int) []int {
+func SliceSumAll(slices ...[]int) (sums []int) {
 
-	numSlices := len(slices)
-	sums := make([]int, numSlices)
-
-	for i, slice := range slices {
-		sums[i] = SliceSum(slice)
+	for _, slice := range slices {
+		sums = append(sums, SliceSum(slice))
 	}
 
 	return sums
