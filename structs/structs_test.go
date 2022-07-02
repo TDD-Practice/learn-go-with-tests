@@ -33,9 +33,19 @@ func TestPolimorphicArea(t *testing.T) {
 		}
 	}
 
-	t.Run("Can calculate area of a Rectangle", func(t *testing.T) {
-		assertShapeArea(t, Rectangle{2.00, 2.00}, 4.00)
-	})
+	areaTests := []struct {
+		shape Shape
+		want  float64
+	}{
+		{shape: Rectangle{width: 2.00, height: 2.00}, want: 4.00},
+		{shape: Circle{radius: 10.00}, want: 10.00 * 2 * 3.1416},
+	}
+
+	for _, tt := range areaTests {
+		t.Run("Can calculate area of a Rectangle", func(t *testing.T) {
+			assertShapeArea(t, tt.shape, tt.want)
+		})
+	}
 
 	t.Run("Can calculate perimeter of a Circle", func(t *testing.T) {
 		circle := Circle{10.00}
@@ -45,10 +55,6 @@ func TestPolimorphicArea(t *testing.T) {
 		if want != got {
 			t.Errorf("wanted %.4f but got %.4f", want, got)
 		}
-	})
-
-	t.Run("Can calculate area of a Circle", func(t *testing.T) {
-		assertShapeArea(t, Circle{10.00}, 10.00*10.00*3.1416)
 	})
 
 	/* 	t.Run("Must fail when calculating the area of a Line", func(t *testing.T) {
