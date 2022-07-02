@@ -27,9 +27,9 @@ func TestSliceSum(t *testing.T) {
 }
 
 func TestSliceSumAll(t *testing.T) {
-	t.Run("Returns 15 for input {4,5,6}", func(t *testing.T) {
-		got := SliceSumAll([]int{4, 5, 6})
-		want := []int{15}
+	t.Run("Returns {6, 15} for input {1,2,3}, {4,5,6}", func(t *testing.T) {
+		got := SliceSumAll([]int{1, 2, 3}, []int{4, 5, 6})
+		want := []int{6, 15}
 
 		assertSliceSumAllGotEqualsWant(t, got, want)
 	})
