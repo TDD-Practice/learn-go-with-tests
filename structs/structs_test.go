@@ -29,7 +29,7 @@ func TestPolimorphicArea(t *testing.T) {
 		t.Helper()
 		got := shape.Area()
 		if got != want {
-			t.Errorf("got %g want %g", got, want)
+			t.Errorf("For %#v got %g want %g", shape, got, want)
 		}
 	}
 
