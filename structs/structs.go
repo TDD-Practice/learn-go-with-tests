@@ -6,8 +6,8 @@ type Rectangle struct {
 }
 
 func RectArea(rect Rectangle) (area float64) {
-	return
+	return rect.height * rect.width
 }
 func RectPerim(rect Rectangle) (perim float64) {
-	return
+	return 2 * (rect.height + rect.width)
 }
