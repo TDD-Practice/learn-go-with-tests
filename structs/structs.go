@@ -9,6 +9,8 @@ type Circle struct {
 	radius float64
 }
 
+type Shape interface{}
+
 func (rect Rectangle) Area() (area float64) {
 	return rect.height * rect.width
 }
