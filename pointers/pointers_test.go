@@ -9,4 +9,14 @@ func TestWallet(t *testing.T) {
 			t.Errorf("Failed to create %#v", newWallet)
 		}
 	})
+
+	t.Run("Can deposit 100 and have a balance of 100", func(t *testing.T) {
+		newWallet := Wallet{}
+
+		newWallet.Deposit(100)
+
+		if newWallet.balance != 100 {
+			t.Errorf("Wallet %#v failed to deposit 100", newWallet)
+		}
+	})
 }
