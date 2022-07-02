@@ -33,4 +33,11 @@ func TestSliceSumAll(t *testing.T) {
 
 		assertSliceSumAllGotEqualsWant(t, got, want)
 	})
+
+	t.Run("Safely accepts empty slices. Returns []int{6, 0} for input {1,2,3}, {}", func(t *testing.T) {
+		got := SliceSumAll([]int{1, 2, 3}, []int{})
+		want := []int{6, 0}
+
+		assertSliceSumAllGotEqualsWant(t, got, want)
+	})
 }
