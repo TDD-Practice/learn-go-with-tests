@@ -5,9 +5,9 @@ type Rectangle struct {
 	height float64
 }
 
-func RectArea(rect Rectangle) (area float64) {
+func (rect Rectangle) Area() (area float64) {
 	return rect.height * rect.width
 }
-func RectPerim(rect Rectangle) (perim float64) {
+func (rect Rectangle) Perim() (perim float64) {
 	return 2 * (rect.height + rect.width)
 }
