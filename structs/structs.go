@@ -1,5 +1,10 @@
 package structs
 
+type Line struct {
+	point1 float64
+	point2 float64
+}
+
 type Rectangle struct {
 	width  float64
 	height float64
