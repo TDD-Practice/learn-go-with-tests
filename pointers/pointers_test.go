@@ -2,6 +2,18 @@ package pointers
 
 import "testing"
 
+func assertError(t testing.TB, got error, want string) {
+	t.Helper()
+
+	if got == nil {
+		t.Fatal("Expected an error to be returned")
+	}
+
+	if got.Error() != want {
+		t.Errorf("got %q, but instead wanted %q", got, want)
+	}
+}
+
 func TestWallet(t *testing.T) {
 	t.Run("Can create a Wallet with starting balance 0", func(t *testing.T) {
 		newWallet := Wallet{}
@@ -47,6 +59,29 @@ func TestTableWallet(t *testing.T) {
 			if got != tC.want {
 				t.Errorf("Wallet %#v failed to deposit 100. Deposit is %.2f", tC.w, tC.w.Balance())
 			}
+
+			tC.w.Withdraw(tC.amount)
+			got = tC.w.Balance()
+			if got != 0 {
+				t.Errorf("Wallet %#v failed to withdraw 100. Deposit is %.2f", tC.w, tC.w.Balance())
+			}
 		})
 	}
+}
+
+func TestOverdrafProtection(t *testing.T) {
+
+	t.Run("Can withdraw 10 form 100 more than Balance()", func(t *testing.T) {
+		newWallet := Wallet{15}
+		err := newWallet.Withdraw(10)
+		if err != nil {
+			t.Errorf("Should be able to withdraw form sufficient funds in wallet %#v", newWallet)
+		}
+	})
+
+	t.Run("Cannot withdraw more than Balance()", func(t *testing.T) {
+		newWallet := Wallet{15}
+		err := newWallet.Withdraw(newWallet.Balance() + 1)
+		assertError(t, err, "not enough founds to withraw the amount")
+	})
 }
