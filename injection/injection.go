@@ -1,11 +1,10 @@
 package injection
 
 import (
-	"bytes"
 	"fmt"
+	"io"
 )
 
-func InjectableGreeter(writer *bytes.Buffer, name string) {
+func InjectableGreeter(writer io.Writer, name string) {
 	fmt.Fprintf(writer, "Hello, %s", name)
-
 }
