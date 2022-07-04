@@ -59,4 +59,12 @@ func TestSearch(t *testing.T) {
 		assertValuesEquals(t, value, want)
 	})
 
+	t.Run("can .Delete() and existing key", func(t *testing.T) {
+		dictionary["delete_key"] = "delete_value"
+		value, _ := dictionary.Delete("delete_key")
+		want := "delete_key"
+
+		assertValuesEquals(t, value, want)
+	})
+
 }

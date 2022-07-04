@@ -51,3 +51,17 @@ func (d Dictionary) Update(key, value string) (new_value string, err error) {
 		return "", searchErr
 	}
 }
+
+func (d Dictionary) Delete(key string) (delete_key string, err error) {
+	_, searchErr := d.Search(key)
+
+	switch searchErr {
+	case ErrorKeyNotFound:
+		return "", ErrorKeyDoesNotExixst
+	case nil:
+		delete(d, key)
+		return key, nil
+	default:
+		return "", searchErr
+	}
+}
