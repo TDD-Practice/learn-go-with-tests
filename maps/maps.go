@@ -25,17 +25,29 @@ func (d Dictionary) Search(key string) (value string, err error) {
 }
 
 func (d Dictionary) Add(key, value string) (new_value string, err error) {
-	if d[key] != "" {
+	_, searchErr := d.Search(key)
+
+	switch searchErr {
+	case ErrorKeyNotFound:
+		d[key] = value
+		return d[key], nil
+	case nil:
 		return "", ErrorKeyAlreadyExixsts
+	default:
+		return "", searchErr
 	}
-	d[key] = value
-	return d[key], nil
 }
 
 func (d Dictionary) Update(key, value string) (new_value string, err error) {
-	if d[key] == "" {
+	_, searchErr := d.Search(key)
+
+	switch searchErr {
+	case ErrorKeyNotFound:
 		return "", ErrorKeyDoesNotExixst
+	case nil:
+		d[key] = value
+		return d[key], nil
+	default:
+		return "", searchErr
 	}
-	d[key] = value
-	return d[key], nil
 }
