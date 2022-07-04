@@ -17,5 +17,6 @@ func (d Dictionary) Search(key string) (value string, err error) {
 }
 
 func (d Dictionary) Add(key, value string) (new_value string, err error) {
-	return "new_value", nil
+	d[key] = value
+	return d[key], nil
 }
