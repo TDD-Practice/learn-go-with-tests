@@ -2,6 +2,6 @@ package injection
 
 import "bytes"
 
-func InjectableGreeter(buffer bytes.Buffer, name string) {
-
+func InjectableGreeter(buffer *bytes.Buffer, name string) {
+	buffer.WriteString("Hello, Matheus")
 }
