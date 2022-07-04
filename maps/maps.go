@@ -18,6 +18,9 @@ func (d Dictionary) Search(key string) (value string, err error) {
 }
 
 func (d Dictionary) Add(key, value string) (new_value string, err error) {
+	if d[key] != "" {
+		return "", ErrorKeyAlreadyExixsts
+	}
 	d[key] = value
 	return d[key], nil
 }
