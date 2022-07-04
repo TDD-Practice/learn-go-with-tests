@@ -12,21 +12,21 @@ func TestSearch(t *testing.T) {
 
 	dictionary := Dictionary{"test_key": "test_value"}
 
-	t.Run("Can read a value from a map given and existing key", func(t *testing.T) {
+	t.Run("Returns the correct value given and existing key", func(t *testing.T) {
 
-		got, err := dictionary.Search("test_key")
+		got, _ := dictionary.Search("test_key")
 		want := "test_value"
 
 		assertValuesEquals(t, got, want)
 
 	})
 
-	t.Run("Error if looking for non-existing key", func(t *testing.T) {
+	t.Run("Returns error for non-existing key", func(t *testing.T) {
 
-		got, err := dictionary.Search("no_existent_key")
-		want := "test_value"
+		_, err := dictionary.Search("non_existent_key")
+		want := "key does not exist"
 
-		assertValuesEquals(t, got, want)
+		assertValuesEquals(t, err.Error(), want)
 	})
 
 }
