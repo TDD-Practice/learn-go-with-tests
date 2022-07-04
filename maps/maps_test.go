@@ -51,4 +51,12 @@ func TestSearch(t *testing.T) {
 		assertErrorsEquals(t, err, want)
 	})
 
+	t.Run("can .Update() and existing key", func(t *testing.T) {
+		dictionary["new_key"] = "old_value"
+		value, _ := dictionary.Update("new_key", "new_value")
+		want := "new_value"
+
+		assertValuesEquals(t, value, want)
+	})
+
 }
