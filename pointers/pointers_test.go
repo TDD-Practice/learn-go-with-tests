@@ -2,14 +2,14 @@ package pointers
 
 import "testing"
 
-func assertError(t testing.TB, got error, want string) {
+func assertError(t testing.TB, got, want error) {
 	t.Helper()
 
 	if got == nil {
 		t.Fatal("Expected an error to be returned")
 	}
 
-	if got.Error() != want {
+	if got != want {
 		t.Errorf("got %q, but instead wanted %q", got, want)
 	}
 }
@@ -82,6 +82,6 @@ func TestOverdrafProtection(t *testing.T) {
 	t.Run("Cannot withdraw more than Balance()", func(t *testing.T) {
 		newWallet := Wallet{15}
 		err := newWallet.Withdraw(newWallet.Balance() + 1)
-		assertError(t, err, "not enough founds to withraw the amount")
+		assertError(t, err, ErrInsufficientFunds)
 	})
 }
