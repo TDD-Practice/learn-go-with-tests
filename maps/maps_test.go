@@ -40,7 +40,7 @@ func TestSearch(t *testing.T) {
 		value, _ := dictionary.Add("new_key", "new_value")
 		want := "new_value"
 
-		assertErrorsEquals(t, value, want)
+		assertValuesEquals(t, value, want)
 	})
 
 }
