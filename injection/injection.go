@@ -1,8 +1,11 @@
 package injection
 
-import "bytes"
+import (
+	"bytes"
+	"fmt"
+)
 
-func InjectableGreeter(buffer *bytes.Buffer, name string) {
-	buffer.WriteString("Hello, ")
-	buffer.WriteString(name)
+func InjectableGreeter(writer *bytes.Buffer, name string) {
+	fmt.Fprintf(writer, "Hello, %s", name)
+
 }
