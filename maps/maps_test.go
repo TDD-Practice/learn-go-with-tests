@@ -43,4 +43,12 @@ func TestSearch(t *testing.T) {
 		assertValuesEquals(t, value, want)
 	})
 
+	t.Run(".Add() msut not ovewrite an existing value", func(t *testing.T) {
+		dictionary["new_key"] = "new_value"
+		_, err := dictionary.Add("new_key", "new_value")
+		want := ErrorKeyAlreadyExixsts
+
+		assertErrorsEquals(t, err, want)
+	})
+
 }
