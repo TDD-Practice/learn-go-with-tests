@@ -27,10 +27,25 @@ func TestRacer(t *testing.T) {
 	fastURL := fastHttpServer.URL
 
 	want := fastURL
-	got := Racer(slowURL, fastURL)
+	got, _ := Racer(slowURL, fastURL)
 
 	if got != want {
 		t.Errorf("got %q but expected %q", got, want)
 	}
 
+	t.Run("Timeout at 10s",
+		func(t *testing.T) {
+			timeoutHttpServer := httptest.NewServer(
+				http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+					time.Sleep(11 * time.Second)
+					w.WriteHeader(http.StatusOK)
+				}))
+			defer timeoutHttpServer.Close()
+
+			_, err := Racer(slowURL, fastURL)
+
+			if err == nil {
+				t.Errorf("Expected to timeout after 10 sec")
+			}
+		})
 }
