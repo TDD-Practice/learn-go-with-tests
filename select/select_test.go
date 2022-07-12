@@ -14,12 +14,14 @@ func TestRacer(t *testing.T) {
 			w.WriteHeader(http.StatusOK)
 
 		}))
+	defer slowHttpServer.Close()
 
 	fastHttpServer := httptest.NewServer(
 		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			time.Sleep(20 * time.Millisecond)
 			w.WriteHeader(http.StatusOK)
 		}))
+	defer fastHttpServer.Close()
 
 	slowURL := slowHttpServer.URL
 	fastURL := fastHttpServer.URL
@@ -31,6 +33,4 @@ func TestRacer(t *testing.T) {
 		t.Errorf("got %q but expected %q", got, want)
 	}
 
-	slowHttpServer.Close()
-	fastHttpServer.Close()
 }
