@@ -14,7 +14,7 @@ import (
 	"testing"
 )
 
-func mockUrlChecker(url string) (result bool) {
+func stubUrlChecker(url string) (result bool) {
 	switch url {
 	case "/true":
 		result = true
@@ -25,7 +25,7 @@ func mockUrlChecker(url string) (result bool) {
 }
 
 func TestCheckUrl(t *testing.T) {
-	got := CheckUrl(mockUrlChecker, []string{"/true", "/false"})
+	got := CheckUrl(stubUrlChecker, []string{"/true", "/false"})
 	want := map[string]bool{"/true": true, "/false": false}
 
 	if !reflect.DeepEqual(want, got) {
