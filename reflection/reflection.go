@@ -1,6 +1,9 @@
 package reflection
 
-import "reflect"
+import (
+	"fmt"
+	"reflect"
+)
 
 /*
 * write walk(x interface{}, cb func(string))
@@ -21,8 +24,9 @@ var pippo = Ciccio{
 	4,
 }
 
-func walk(x any, cb func(string)) {
+func walk(x any, cb func(s string)) {
 	val := reflect.ValueOf(x)
 	field := val.Field(0)
+	fmt.Println(field.String())
 	cb(field.String())
 }

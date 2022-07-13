@@ -49,8 +49,8 @@ func TestWalk(t *testing.T) {
 			walk(tC.input, func(s string) {
 				received = append(received, s)
 			})
-			if reflect.DeepEqual(received, tC.expectedCalls) {
-				t.Errorf("got %v, want %v", received, tC.expectedCalls)
+			if !reflect.DeepEqual(received, tC.expectedCalls) {
+				t.Errorf("received %v, but was expecting %v", received, tC.expectedCalls)
 			}
 		})
 	}
