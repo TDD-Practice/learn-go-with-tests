@@ -41,6 +41,14 @@ func TestWalk(t *testing.T) {
 			input:         struct{ Name string }{"Matheus"},
 			expectedCalls: []string{"Matheus"},
 		},
+		{
+			desc: "two fields that are 'string' type",
+			input: struct {
+				Name string
+				City string
+			}{"Marco", "Napoli"},
+			expectedCalls: []string{"Marco", "Napoli"},
+		},
 	}
 
 	for _, tC := range testCases {
