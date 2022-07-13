@@ -1,7 +1,5 @@
 package reflection
 
-import "fmt"
-
 /*
 * write walk(x interface{}, cb func(string))
 * that calls cb for every string in x where x is a struct
@@ -22,5 +20,5 @@ var pippo = Ciccio{
 }
 
 func walk(x any, cb func(string)) {
-	fmt.Println("walking the talk")
+	cb("walking the talk")
 }
