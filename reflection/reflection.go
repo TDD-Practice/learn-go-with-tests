@@ -29,6 +29,8 @@ func walk(x any, cb func(s string)) {
 	for i := 0; i < val.NumField(); i++ {
 		field := val.Field(i)
 		fmt.Println(field.String())
-		cb(field.String())
+		if field.Kind() == reflect.String {
+			cb(field.String())
+		}
 	}
 }
