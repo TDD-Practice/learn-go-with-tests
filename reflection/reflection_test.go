@@ -49,6 +49,14 @@ func TestWalk(t *testing.T) {
 			}{"Marco", "Napoli"},
 			expectedCalls: []string{"Marco", "Napoli"},
 		},
+		{
+			desc: "mixed fields that are also not 'string' type",
+			input: struct {
+				Name string
+				Age  int
+			}{"Marco", 48},
+			expectedCalls: []string{"Marco"},
+		},
 	}
 
 	for _, tC := range testCases {

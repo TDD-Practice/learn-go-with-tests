@@ -26,7 +26,9 @@ var pippo = Ciccio{
 
 func walk(x any, cb func(s string)) {
 	val := reflect.ValueOf(x)
-	field := val.Field(0)
-	fmt.Println(field.String())
-	cb(field.String())
+	for i := 0; i < val.NumField(); i++ {
+		field := val.Field(i)
+		fmt.Println(field.String())
+		cb(field.String())
+	}
 }
